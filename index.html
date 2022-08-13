@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>texto sendo digitado</title>
+    <style>
+        .container {
+            width: 100%;
+            max-width: 600px;
+            height: 200px;
+            background-color: #Cfcf;
+            border-radius: 20px;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container .bloco-texto {
+            width: 90%;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container .bloco-texto input {
+            width: 100%;
+            outline: none;
+            border: none;
+            height: 100px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="bloco-texto">
+            <label for="texto">digitando...</label>
+            <input type="text" id="texto">
+        </div>
+    </div>
+
+    <script>
+
+        let input = document.querySelector("#texto");
+
+        function escreveTexto(texto, contador) {
+
+            if (contador < texto.length) {
+
+                setTimeout(() => {
+                    input.value += texto.charAt(contador);
+                    contador++;
+                    escreveTexto(texto, contador);
+                }, 90);
+            }
+        }
+
+        escreveTexto("Meu nome é Wilson", 0);
+
+    </script>
+
+</body>
+
+</html>
